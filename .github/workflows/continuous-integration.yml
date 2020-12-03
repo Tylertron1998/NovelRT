@@ -22,7 +22,7 @@ jobs:
       - name: Build
         run: scripts/cibuild.sh --build --configuration ${{ matrix.configuration }}
         
-      - name: Test
+      - name: Tests
         run: scripts/cibuild.sh --test --configuration ${{ matrix.configuration }}
 
   CI_Windows:
@@ -47,5 +47,5 @@ jobs:
       - name: Build
         run: scripts/cibuild.cmd -build -configuration ${{ matrix.configuration }}
         
-      - name: Test
+      - name: Tests
         run: scripts/cibuild.cmd -test -configuration ${{ matrix.configuration }}
