@@ -14,13 +14,13 @@ jobs:
       image: novelrt/novelrt-build:latest
     strategy:
       matrix:
-        configuration: [DEBUG, RELEASE]
+        configuration: [Debug, Release]
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
       - name: Build
-        run: scripts/cibuild.sh --configuration ${{ matrix.configuration }} --test false
+        run: scripts/cibuild.sh --configuration ${{ matrix.configuration }}
         
       - name: Tests
         run: scripts/cibuild.sh --configuration ${{ matrix.configuration }}
