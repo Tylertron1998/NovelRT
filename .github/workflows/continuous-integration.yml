@@ -19,8 +19,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Ubuntu - Run CI Build Script
-        run: scripts/cibuild.sh --configuration ${{ matrix.configuration }}
+      - name: Build
+        run: scripts/cibuild.sh --build --configuration ${{ matrix.configuration }}
+        
+      - name: Test
+        run: scripts/cibuild.sh --test --configuration ${{ matrix.configuration }}
 
   CI_Windows:
     name: windows_${{ matrix.configuration }}_x64
@@ -41,5 +44,8 @@ jobs:
       - name: Run Windows Setup
         run: scripts/machine-setup.cmd
 
-      - name: Run CI Build Script
-        run: scripts/cibuild.cmd -configuration ${{ matrix.configuration }}
+      - name: Build
+        run: scripts/cibuild.cmd -build -configuration ${{ matrix.configuration }}
+        
+      - name: Test
+        run: scripts/cibuild.cmd -test -configuration ${{ matrix.configuration }}
